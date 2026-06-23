@@ -1,0 +1,383 @@
+/* ============================================================
+   css/style.css — Restaurante Solo Bueno 
+   ============================================================ */
+
+/* --- Variables de color  --- */
+/* ---  Bloque :root con las variables var(--color-). para llamarlas automaticamente y no tener que repetir el codigo --- */
+:root {
+    --color-primario:    #2d5a27;   /* verde oscuro — encabezados */
+    --color-secundario:  #4a7c43;   /* verde medio — acentos */
+    --color-acento:      #5c8a3c;   /* verde oliva — botones activos */
+    --color-fondo:       #f9f5e7;   /* crema base — fondo general */
+    --color-fondo-card:  #fffdf4;   /* crema claro — cards */
+    --color-texto:       #2c2c2c;   /* casi negro — texto general */
+    --color-texto-suave: #6b7c65;   /* verde grisáceo — texto secundario */
+    --color-borde:       #d6e8c8;   /* verde muy suave — bordes */
+    --color-exito:       #27ae60;   /* verde — confirmación */
+    --color-error:       #c0392b;   /* rojo — errores  */
+    --color-grupo-grande:#eaf4d3;   /* verde menta suave — reservas +6 personas */
+    --fuente-titulo: 'Playfair Display', serif;
+    --fuente-cuerpo: 'Lato', sans-serif;
+    --sombra-card:       0 2px 10px rgba(45,90,39,0.10);
+}
+
+/* --- Reset básico --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-cuerpo);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   ENCABEZADO
+   ============================================================ */
+.sitio-header {
+    background-color: var(--color-primario);
+    color: #ffffff;
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 4px solid var(--color-acento);
+}
+
+.sitio-titulo {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+}
+
+.sitio-subtitulo {
+    font-size: 1rem;
+    color: #e8d5c4;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   TÍTULOS DE SECCIÓN
+   ============================================================ */
+.seccion-titulo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    border-left: 5px solid var(--color-acento);
+    padding-left: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.subtitulo-tabla {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-secundario);
+    margin-bottom: 1rem;
+}
+
+.separador {
+    border: none;
+    border-top: 2px solid var(--color-borde);
+    margin: 2.5rem 0;
+}
+
+/* ============================================================
+   FILTROS DEL MENÚ
+   ============================================================ */
+.filtros-menu {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.btn-filtro {
+    background-color: #ffffff;
+    color: var(--color-secundario);
+    border: 2px solid var(--color-secundario);
+    border-radius: 25px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.btn-filtro:hover {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+}
+
+/* Botón activo (categoría seleccionada) */
+.btn-filtro.activo {
+    background-color: var(--color-acento);
+    color: #ffffff;
+    border-color: var(--color-acento);
+}
+
+.btn-filtro:active {
+    transform: scale(0.97);
+}
+
+/* ============================================================
+   CARDS DEL MENÚ — clase obligatoria: .card-plato
+   ============================================================ */
+.card-plato {
+    background-color: var(--color-fondo-card);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: var(--sombra-card);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-plato:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(90,62,43,0.18);
+}
+
+/* Nombre del plato */
+.card-nombre {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    margin-bottom: 0.4rem;
+}
+
+/* Descripción */
+.card-descripcion {
+    font-size: 0.88rem;
+    color: var(--color-texto-suave);
+    flex-grow: 1;
+    margin-bottom: 0.8rem;
+}
+
+/* Pie de la card (precio + categoría) */
+.card-pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+/* Precio en colones */
+.card-precio {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-acento);
+}
+
+/* Etiqueta de categoría */
+.card-categoria {
+    background-color: var(--color-primario);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.65rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+ /*  FORMULARIO DE RESERVAS */
+
+.campo-grupo {
+    margin-bottom: 1.1rem;
+}
+
+.campo-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primario);
+    margin-bottom: 0.3rem;
+}
+
+.requerido {
+    color: var(--color-error);
+}
+
+.opcional {
+    color: var(--color-texto-suave);
+    font-weight: 400;
+    font-size: 0.82rem;
+}
+
+.campo-input {
+    width: 100%;
+    padding: 0.55rem 0.85rem;
+    border: 2px solid var(--color-borde);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    background-color: #ffffff;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+.campo-input:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+}
+
+/* Campo con error (borde rojo al fallar validación) */
+.campo-input.invalido {
+    border-color: var(--color-error);
+}
+
+/* ============================================================
+   CLASE OBLIGATORIA: .error-campo
+   Muestra el mensaje de error debajo del input
+   ============================================================ */
+.error-campo {
+    display: block;
+    color: var(--color-error);
+    font-size: 0.82rem;
+    min-height: 1.1rem;
+    margin-top: 0.25rem;
+}
+
+/* Botón de envío */
+.btn-enviar {
+    width: 100%;
+    background-color: var(--color-acento);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+    margin-top: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-enviar:hover:not(:disabled) {
+    background-color: var(--color-primario);
+}
+
+/* Estado deshabilitado (campos no válidos) */
+.btn-enviar:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* ============================================================
+   TABLA DE RESERVAS
+   ============================================================ */
+.tabla-contenedor {
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1px solid var(--color-borde);
+    margin-bottom: 1.25rem;
+}
+
+.tabla-reservas {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.tabla-reservas thead tr {
+    background-color: var(--color-primario);
+    color: #ffffff;
+}
+
+.tabla-reservas th {
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.tabla-reservas td {
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--color-borde);
+    color: var(--color-texto);
+}
+
+/* ============================================================
+   CLASE OBLIGATORIA: .fila-reserva
+   Clase aplicada a cada <tr> de reserva
+   ============================================================ */
+.fila-reserva {
+    background-color: #ffffff;
+    transition: background-color 0.2s;
+}
+
+.fila-reserva:hover {
+    background-color: #fdf0e6;
+}
+
+/* Resaltado visual: reservas con 6 o más personas */
+.fila-reserva.grupo-grande {
+    background-color: var(--color-grupo-grande);
+    font-weight: 600;
+}
+
+.fila-reserva.grupo-grande:hover {
+    background-color: #ffe8a1;
+}
+
+/* ============================================================
+   CLASE OBLIGATORIA: .resumen-reservas
+   Bloque dinámico con estadísticas de reservas
+   ============================================================ */
+.resumen-reservas {
+    background-color: var(--color-primario);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 1.1rem 1.4rem;
+    font-size: 0.92rem;
+}
+
+.resumen-titulo {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    padding-bottom: 0.4rem;
+}
+
+.resumen-dato {
+    margin-bottom: 0.3rem;
+}
+
+.resumen-dato span {
+    font-weight: 700;
+    color: #f5c687;
+}
+
+.resumen-vacio {
+    color: var(--color-texto-suave);
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+/* ============================================================
+   PIE DE PÁGINA
+   ============================================================ */
+.sitio-footer {
+    background-color: var(--color-primario);
+    color: #e8d5c4;
+    text-align: center;
+    padding: 1.25rem 0;
+    margin-top: 3rem;
+    font-size: 0.88rem;
+}
+
+
+
